@@ -1,0 +1,13 @@
+{
+  "name": "02_cpp_utils",
+  "version": "1.0.0",
+  "description": "Header-only C++ helper utilities (GUID, string parsing, etc.)",
+  "keywords": ["cpp", "utils", "utility", "helpers"],
+  "authors": [{"name": "Nayan"}],
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*",
+  "dependencies": {
+    "cpp_core": "https://github.com/compilerNayan/cpp_core.git"
+  }
+}
