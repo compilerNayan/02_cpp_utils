@@ -8,16 +8,15 @@
 
 #include <StandardDefines.h>
 #include <string>
+#include <type_traits>
 
 namespace cpp_utils {
 
-/** Convert numeric value to StdString. */
-inline StdString ToString(Size value) { return std::to_string(value); }
-inline StdString ToString(ULong value) { return std::to_string(value); }
-inline StdString ToString(Int value) { return std::to_string(value); }
-inline StdString ToString(UInt value) { return std::to_string(value); }
-inline StdString ToString(Long value) { return std::to_string(value); }
-inline StdString ToString(ULongLong value) { return std::to_string(value); }
+/** Convert numeric value to StdString. One overload per actual type (avoids redefinition when Size == UInt on 32-bit). */
+template<typename T>
+inline typename std::enable_if<std::is_arithmetic<T>::value, StdString>::type ToString(T value) {
+    return std::to_string(value);
+}
 
 /** Replace first "{}" in format with string form of value. Returns formatted string. */
 template<typename T>
